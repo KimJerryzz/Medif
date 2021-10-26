@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="fragments/header"></th:block>
+    <script>
+        function fn_search() {
+            let frm = $('#form1');
+
+            frm.prop('action', '?');
+            frm.submit();
+        }
+
+        $(document).ready(function () {
+            $('#detail').on('click',function () {
+                $('#exampleModalCenter').show();
+            })
+        })
+
+    </script>
+</head>
+<body>
+<div id="wrap" class="sub">
+    <div id="container">
+        <th:block th:include="fragments/menu"></th:block>
+        <div class="top_tit_inner">
+            <span class="top_tit inner">전문가 검색</span>
+        </div>
+        <form id="form1" name="form1" method="post" th:object="${form}">
+            <div class="layout_sub inner">
+                <div class="board_search_list">
+                    <div class="page_cont">
+                            <div class="board_top_search">
+                                <div class="search_select">
+                                    <select name="srchType" id="">
+                                        <option value="all">전체</option>
+                                        <option value="a">이름</option>
+                                        <option value="b">전문분야</option>
+                                        <option value="c">의료분야</option>
+                                    </select>
+                                </div>
+                                <input type="search" name="srchField" th:field="*{srchField}" placeholder="무엇을 찾고 싶으신가요?">
+                                <button class="bg_btn1" onclick="fn_search()">검색</button>
+                            </div>
+                        <div class="list_items" th:if="${expertsList == null or expertsList.isEmpty()}">
+                            <span>등록된 전문가가 없습니다.</span>
+                        </div>
+                        <div class="list_items" th:if="${expertsList != null}">
+                            <span th:text="|등록된 전문가는 ${#numbers.formatInteger(expertsList.totalElements, 0, 'COMMA')} 명 입니다.|">등록된 전문가는 00 명 입니다.</span>
+                        </div>
+                        <div class="board_list type_02" th:if="${expertsList != null}" >
+                            <div class="type_02_inner">
+                                <div class="type_02_item" id="detail" th:each="item,idx:${expertsList}">
+                                    <div class="type_02_img">
+                                        <img th:src="|/ui/img/contents/info_0${idx.count}.png|" alt="이미지">
+                                    </div>
+                                    <div class="type_02_desc">
+                                        <small th:text="${item.position}">임상의</small>
+                                        <div>
+                                            <span th:text="${item.nm}">홍길동</span>
+                                            <p th:text="${item.affiliation}">
+                                                가나다 대학병원<b></b>(내과)가정의학과
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <th:block class="container"
+                                    th:replace="/fragments/paging :: pagingbody(list=${expertsList}, link='/expert/list', formId='form1')"></th:block>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <th:block th:include="fragments/footer"></th:block>
+</div>
+</div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

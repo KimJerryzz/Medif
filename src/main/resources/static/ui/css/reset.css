@@ -1,0 +1,36 @@
+/***** reset *****/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var, b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup, menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;font-size:10px;vertical-align:baseline;border:0;box-sizing:border-box;-webkit-text-size-adjust:none}
+dl,ul,ol,menu,li{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
+fieldset,img{vertical-align:top;border:0}
+hr,legend,caption{display:none}
+table{width:100%;table-layout:fixed;border-collapse:collapse;border-spacing:0}
+input,select,textarea,button,label{font-family:inherit;vertical-align:middle}
+input,select,textarea{border:1px solid #ccc;border-radius:0;box-shadow:none;box-sizing:border-box;outline:none;appearance:none;-webkit-appearance:none;-moz-appearance:none}
+::placeholder{color:#a5a5a5;opacity:1}
+:-ms-input-placeholder{color:#a5a5a5;vertical-align:top}
+::-ms-input-placeholder{color:#a5a5a5}
+::-moz-focus-inner{padding:0;border:0}
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button{height:auto;-webkit-appearance:none}
+input::-webkit-search-cancel-button, input::-webkit-search-decoration{-webkit-appearance:none}
+input:-ms-clear{display:none}
+input::-ms-clear{display:none}
+input[readonly], input[disabled], textarea[readonly], textarea[disabled]{color:#808080;background-color:#f8fafb;outline:none;cursor:default}
+input{width:100%;height:44px;padding:0 10px;line-height:42px;border-radius: 8px;}
+input[type="number"]{-moz-appearance:textfield}
+input[type="radio"],input[type="checkbox"]{position:absolute;width:0 !important;height:0;margin:0;padding:0;opacity:0}
+select{width:100%;height:44px;border-radius: 8px;}
+select::-ms-expand{display:none}
+option{color:#5a5a5a;font-size:15px}
+option[disabled]{display:none}
+textarea{width:100%;padding:10px 15px;font-size:15px;resize:none}
+button, input[type="submit"]{border:0;background-color:transparent;cursor:pointer}
+address,em,i{font-style:normal}
+a{color:#333;text-decoration:none}
+img{max-width:100%}
+input:focus::placeholder {
+    opacity: 0;
+ }
+/*body{color:#333;font-size:14px;font-family:'Noto Sans KR', Malgun Gothic, '맑은고딕', Dotum, '굴림', Gulim, Helvetica, sans-serif}*/
+body{color:#54586a;font-size:1rem;font-family:'Noto Sans KR', Malgun Gothic, '맑은고딕', Dotum, '굴림', Gulim, Helvetica, sans-serif}
