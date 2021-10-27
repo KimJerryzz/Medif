@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="fragments/header"></th:block>
+    <script>
+
+    </script>
+</head>
+<body>
+<div id="wrap" class="sub">
+    <div id="container">
+        <th:block th:include="fragments/menu"></th:block>
+        <div class="layout_sub inner">
+            <div class="board_search_list">
+                <div class="page_cont">
+<!--                    <div class="search_inner search_3_inner">-->
+<!--                        <ul class="search_items search_2">-->
+<!--                            <li>-->
+<!--                                <div>-->
+<!--                                    <input type="checkbox" name="chk_1" id="chk_item1">-->
+<!--                                    <label for="chk_item1"></label>-->
+<!--                                    <span>임상</span>-->
+<!--                                </div>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <div>-->
+<!--                                    <input type="checkbox" name="chk_1" id="chk_item2">-->
+<!--                                    <label for="chk_item2"></label>-->
+<!--                                    <span>기업</span>-->
+<!--                                </div>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <div>-->
+<!--                                    <input type="checkbox" name="chk_1" id="chk_item3">-->
+<!--                                    <label for="chk_item3"></label>-->
+<!--                                    <span>전문가</span>-->
+<!--                                </div>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+                    <div class="board_list type_03">
+                        <div class="type_03_inner">
+                            <div class="type_03_img">
+                                <img src="/ui/img/contents/detail.png" alt="">
+                            </div>
+                            <div class="type_03_desc">
+                                <ul>
+                                    <li>
+                                        <div><span>이름</span></div>
+                                        <div><b th:text="${data.nm}">홍길동</b></div>
+                                    </li>
+<!--                                    <li class="type_03_detail">-->
+<!--                                        <div><span>전문분야 파트너링</span></div>-->
+<!--                                        <div>-->
+<!--                                            <b th:text="${data.specializedPartner}">내과</b>-->
+<!--                                        </div>-->
+<!--                                    </li>-->
+                                    <li>
+                                        <div><span>직위</span></div>
+                                        <div><b th:text="${data.position}">원장</b></div>
+                                    </li>
+                                    <li>
+                                        <div><span>소속</span></div>
+                                        <div><b th:text="${data.affiliation}">잘하는 내과</b></div>
+                                    <li>
+                                        <div><span>홈페이지</span></div>
+                                        <div><a th:text="${data.homepage eq '' ? '없음' : data.homepage}" th:href="${data.homepage eq '' ? '#' : 'http://'+data.homepage}"></a></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="desc">
+                            <h4>상세정보</h4>
+                            <div class="info">
+                                <div>
+                                    <span>전문분야 파트너링</span>
+                                    <p th:text="${data.specializedPartner eq '' ? '등록된 정보 없음.' : data.specializedPartner}"></p>
+                                    <span>개발 파트너링</span>
+                                    <p th:text="${data.devPartner eq '' ? '등록된 정보 없음.' : data.devPartner}"></p>
+                                    <span>생산 파트너링</span>
+                                    <p th:text="${data.productionPartner eq '' ? '등록된 정보 없음.' : data.productionPartner}"></p>
+                                    <span>관심 의료기기분야</span>
+                                    <p th:text="${data.interestMediDevice eq '' ? '등록된 정보 없음.' : data.interestMediDevice}"></p>
+                                    <span>관심 의료분야</span>
+                                    <p th:text="${data.keywords eq '' ? '등록된 정보 없음.' : data.keywords}"></p>
+                                    <span>경력사항</span>
+                                    <p th:text="${data.career eq '' ? '등록된 정보 없음.' : data.career}"></p>
+                                    <span>보유 자격증</span>
+                                    <p th:text="${data.certificate eq '' ? '등록된 정보 없음.' : data.certificate}"></p>
+                                    <span>최종학력 및 학위</span>
+                                    <p th:text="${data.academic eq '' ? '등록된 정보 없음.' : data.academic}"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="">컨설팅을 원하시는 분은 재단으로 연락바랍니다.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="fragments/footer"></th:block>
+</div>
+</div>
+</body>
+</html>

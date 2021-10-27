@@ -1,4 +1,4 @@
-package kr.or.medif.controller;
+package kr.or.medif.controller.web.expert;
 
 import kr.or.medif.common.Base;
 import kr.or.medif.domain.entity.Expert;
@@ -12,23 +12,34 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
-public class HomeController extends Base {
+public class ExpertController extends Base {
 
     @Autowired
     private ExpertService expertService;
 
-    @RequestMapping("/")
-    public String index(Model model,
+    @RequestMapping("/expert/list")
+    public String expertList(Model model,
                         @PageableDefault Pageable pageable,
                         @ModelAttribute SearchVO searchVO){
-
+        model.addAttribute("mc", "expert");
         model.addAttribute("form", searchVO);
         Page<Expert> experts = expertService.list(pageable, searchVO);
         model.addAttribute("expertsList", experts);
-        return "index";
+        return "/pages/expert/expertList";
+    }
+
+    @RequestMapping("/expert/detail/{id}")
+    public String expertDetail(Model model,
+                             @PathVariable(name = "id") Long id){
+
+        Expert load = expertService.load(id);
+        model.addAttribute("data", load);
+        model.addAttribute("mc", "expert");
+        return "/pages/expert/expertDetail";
     }
 }

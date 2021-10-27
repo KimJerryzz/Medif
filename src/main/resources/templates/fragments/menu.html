@@ -8,10 +8,10 @@
                 <a href="void(0);" onclick="alert('준비중입니다.');return false;">소개</a>
             </li>
             <li>
-                <a href="/">의료기기 검색</a>
+                <a th:class="${mc eq 'device' ? 'menu_active' : ''}" href="/device/list">의료기기 검색</a>
             </li>
             <li>
-                <a class="menu_active" href="/expert/list">전문가 검색</a>
+                <a th:class="${mc eq 'expert' ? 'menu_active' : ''}" class="menu_active" href="/expert/list">전문가 검색</a>
             </li>
             <li>
                 <a href="void(0);" onclick="alert('준비중입니다.');return false;">프로젝트</a>
@@ -26,3 +26,14 @@
         <a class="login" href="void(0);" onclick="alert('준비중입니다.');return false;">로그인</a>
     </nav>
 </header>
+<div class="top_tit_inner">
+    <th:block th:if="${mc eq 'main'}">
+        <span class="top_tit inner" th:text="${mc eq 'main' ? '홈' : ''}"></span>
+    </th:block>
+    <th:block th:if="${mc eq 'expert'}">
+        <span class="top_tit inner" th:text="${mc eq 'expert' ? '전문가 검색' : ''}">전문가 검색</span>
+    </th:block>
+    <th:block th:if="${mc eq 'device'}">
+        <span class="top_tit inner" th:text="${mc eq 'device' ? '의료기기 검색' : ''}">전문가 검색</span>
+    </th:block>
+</div>

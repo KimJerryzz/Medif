@@ -162,7 +162,7 @@ footer .footer_inner .footer_info p span {
     top: 50%;
     transform: translateY(-50%);
     right: 10px;
-    background: url('/img/button/arrow_bottom.png')no-repeat center center;
+    background: url('/ui/img/button/arrow_bottom.png')no-repeat center center;
     background-size: contain;
 }
 .search_inner .search_items li.level_btn > div .select_bx select {
@@ -201,7 +201,7 @@ footer .footer_inner .footer_info p span {
     top: 50%;
     transform: translateY(-50%);
     right: 10px;
-    background: url('/img/button/arrow_bottom.png')no-repeat center center;
+    background: url('/ui/img/button/arrow_bottom.png')no-repeat center center;
     background-size: contain;
 }
 .board_top_search .search_select select {
@@ -261,7 +261,7 @@ footer .footer_inner .footer_info p span {
     top: 50%;
     transform: translateY(-50%);
     right: 10px;
-    background: url('/img/button/arrow_bottom.png')no-repeat center center;
+    background: url('/ui/img/button/arrow_bottom.png')no-repeat center center;
     background-size: contain;
 }
 .board_search_list .page_cont .board_top > div:nth-of-type(2) button {
@@ -375,17 +375,17 @@ footer .footer_inner .footer_info p span {
     height: 20px;
     top: 50%;
     right: 0;
-    background: url('/img/button/plus.png')no-repeat center center;
+    background: url('/ui/img/button/plus.png')no-repeat center center;
 }
 .pagination_area .pagenation a.prev_btn {
-    background: url('/img/button/arrow_left.png')no-repeat center center;
+    background: url('/ui/img/button/arrow_left.png')no-repeat center center;
     background-size: 10px;
     margin-bottom: -10px;
     margin-right: 20px;
 }
 .pagination_area .pagenation a.next_btn {
     margin-left: 20px;
-    background: url('/img/button/arrow_right.png')no-repeat center center;
+    background: url('/ui/img/button/arrow_right.png')no-repeat center center;
     background-size: 10px;
     margin-bottom: -10px;
 }
@@ -394,15 +394,15 @@ footer .footer_inner .footer_info p span {
 
 /* 전문가 검색 시작 */
 .board_list.type_02 .type_02_inner {
-    display: flex;
     margin-bottom: 20px;
+    overflow: hidden;
+    display: grid;
+    grid: '. . .';
+    gap: 20px;
 }
 .type_02_inner .type_02_item {
-    display: flex;
-    flex: 1;
+    margin-bottom: 30px;
     border: 1px solid #ddd;
-    flex-direction: column;
-    margin-right: 20px;
 }
 .type_02_inner .type_02_item:last-child {
     margin-right: 0;
@@ -437,6 +437,13 @@ footer .footer_inner .footer_info p span {
 .type_02_inner .type_02_item .type_02_desc > div span {
     border-bottom: 1px solid #ddd;
     font-size: 2.4rem;
+    display: block;
+}
+.type_02_inner .type_02_item .type_02_desc > div a {
+    border-bottom: 1px solid #ddd;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #ff8964;
     display: block;
 }
 .type_02_inner .type_02_item .type_02_desc span, .type_02_inner .type_02_item .type_02_desc > div p {
@@ -478,7 +485,7 @@ footer .footer_inner .footer_info p span {
     cursor: pointer;
 }
 .search_items li div input:checked + label:after {
-    background: url('/img/button/ckh_btn.png')no-repeat center left;
+    background: url('/ui/img/button/ckh_btn.png')no-repeat center left;
 }
 .search_inner .search_items.search_2 li > div span {
     width: auto;
@@ -492,7 +499,7 @@ footer .footer_inner .footer_info p span {
     left: 0;
     width: 40px;
     height: 40px;
-    background: url('/img/button/ckh_btn.png')no-repeat center right;
+    background: url('/ui/img/button/ckh_btn.png')no-repeat center right;
 }
 .type_03_inner {
     display: flex;
@@ -541,6 +548,16 @@ footer .footer_inner .footer_info p span {
     white-space: nowrap;
     font-size: 1.6rem;
 }
+
+.type_03_inner .type_03_desc ul li > div a {
+    font-weight: normal;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 1.6rem;
+    color: #F1592A;
+}
+
 .type_03_inner .type_03_desc ul li.type_03_detail b {
     background-color: #0d302c;
     color: #fff;
