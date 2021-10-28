@@ -22,7 +22,7 @@ public class ExpertController extends Base {
     @Autowired
     private ExpertService expertService;
 
-    @RequestMapping("expert/list")
+    @RequestMapping("pages/expert/list")
     public String expertList(Model model,
                         @PageableDefault Pageable pageable,
                         @ModelAttribute SearchVO searchVO){
@@ -33,7 +33,7 @@ public class ExpertController extends Base {
         return "pages/expert/expertList";
     }
 
-    @RequestMapping("expert/detail/{id}")
+    @RequestMapping("pages/expert/detail/{id}")
     public String expertDetail(Model model,
                              @PathVariable(name = "id") Long id){
 

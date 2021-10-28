@@ -29,7 +29,7 @@ public class DeviceController extends Base {
     @Autowired
     private ApiExplorer apiExplorer;
 
-    @RequestMapping("device/list")
+    @RequestMapping("pages/device/list")
     public String expertList(Model model,
                             @ModelAttribute Form form) {
         model.addAttribute("form", form);
