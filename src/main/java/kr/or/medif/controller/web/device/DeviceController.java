@@ -29,13 +29,13 @@ public class DeviceController extends Base {
     @Autowired
     private ApiExplorer apiExplorer;
 
-    @RequestMapping("/device/list")
+    @RequestMapping("device/list")
     public String expertList(Model model,
                             @ModelAttribute Form form) {
         model.addAttribute("form", form);
         RequestBody objList = deviceService.getPrdLst(form);
         model.addAttribute("apiList", objList);
         model.addAttribute("mc", "device");
-        return "/pages/device/deviceList";
+        return "pages/device/deviceList";
     }
 }
