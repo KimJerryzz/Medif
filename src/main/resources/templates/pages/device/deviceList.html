@@ -5,16 +5,15 @@
     <script>
         function fn_search() {
             let frm = $('#form1');
-
             frm.prop('action', '?');
             frm.submit();
         }
 
-        $(document).ready(function () {
-            $('#detail').on('click',function () {
-                $('#exampleModalCenter').show();
-            })
-        })
+        function fn_reset() {
+            $('#UDIDI_CD').val('');
+            $('#PRDLST_NM').val('');
+            fn_search();
+        }
 
     </script>
 </head>
@@ -29,7 +28,7 @@
                         <li>
                             <div>
                                 <span>UDIDI 코드</span>
-                                <input type="search" placeholder="UDIDI(제품 바코드)를 입력하세요.">
+                                <input type="text" name="UDIDI_CD" id="UDIDI_CD" th:field="*{UDIDI_CD}" placeholder="UDIDI(제품 바코드)를 입력하세요.">
                             </div>
                         </li>
 <!--                        <li>-->
@@ -41,44 +40,44 @@
                         <li>
                             <div>
                                 <span>품목명</span>
-                                <input type="text" placeholder="품목명을 입력하세요.">
+                                <input type="text" name="PRDLST_NM" id="PRDLST_NM" th:field="*{PRDLST_NM}" placeholder="품목명을 입력하세요.">
                             </div>
                         </li>
-                        <li>
-                            <div>
-                                <span>모델명</span>
-                                <input type="text" placeholder="예시)238035M5">
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <span>제품명</span>
-                                <input type="text" placeholder="제품명을 입력하세요.">
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <span>품목허가번호</span>
-                                <input type="text" placeholder="예시)수허00-000호(공백없이)">
-                            </div>
-                        </li>
-                        <li class="level_btn">
-                            <div>
-                                <span>등급</span>
-                                <div class="select_bx">
-                                    <select name="" id="">
-                                        <option value="">전체</option>
-                                        <option value="1">1등급</option>
-                                        <option value="2">2등급</option>
-                                        <option value="3">3등급</option>
-                                        <option value="4">4등급</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </li>
+<!--                        <li>-->
+<!--                            <div>-->
+<!--                                <span>모델명</span>-->
+<!--                                <input type="text" placeholder="예시)238035M5">-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <div>-->
+<!--                                <span>제품명</span>-->
+<!--                                <input type="text" placeholder="제품명을 입력하세요.">-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <div>-->
+<!--                                <span>품목허가번호</span>-->
+<!--                                <input type="text" placeholder="예시)수허00-000호(공백없이)">-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                        <li class="level_btn">-->
+<!--                            <div>-->
+<!--                                <span>등급</span>-->
+<!--                                <div class="select_bx">-->
+<!--                                    <select name="" id="">-->
+<!--                                        <option value="">전체</option>-->
+<!--                                        <option value="1">1등급</option>-->
+<!--                                        <option value="2">2등급</option>-->
+<!--                                        <option value="3">3등급</option>-->
+<!--                                        <option value="4">4등급</option>-->
+<!--                                    </select>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </li>-->
                     </ul>
                     <div class="btn_inner">
-                        <button class="bg_btn1">검색</button>
+                        <button class="bg_btn1"onclick="fn_search()">검색</button>
                         <button class="bg_btn2">초기화</button>
                     </div>
                 </div>
@@ -93,13 +92,13 @@
                                 </th:block>
                                 <th:block th:if="${apiList.totalCount > 0}">
                                     <span>
-                                        검색결과 : <u th:text="|${#numbers.formatInteger(apiList.totalCount, 0, 'COMMA')}|"></u>
+                                        검색결과 : <u th:text="|${#numbers.formatInteger(apiList.totalCount, 0, 'COMMA')}건|"></u>
                                     </span>
                                 </th:block>
                             </div>
                             <div>
                                 <div class="list_type">
-                                    <select name="numOfRows" id="numOfRows">
+                                    <select name="numOfRows" id="numOfRows" th:field="*{numOfRows}">
                                         <option value="10">10건</option>
                                         <option value="20">20건</option>
                                         <option value="30">30건</option>
@@ -127,16 +126,8 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="pagination_area">
-                        <div class="pagenation">
-                            <a class="prev_btn" href="#none"></a>
-                            <a class="active" href="#none">1</a>
-                            <a href="#none">2</a>
-                            <a href="#none">3</a>
-                            <a href="#none">4</a>
-                            <a class="next_btn" href="#none"></a>
-                        </div>
-                    </div>
+                    <th:block
+                            th:replace="/fragments/api_paging :: pagingbody(list=${apiList}, link='/device/list', formId='form1')"></th:block>
                 </div>
             </div>
         </form>

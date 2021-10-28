@@ -1,0 +1,30 @@
+<div class="pagination_area" xmlns:th="http://www.thymeleaf.org" th:fragment="pagingbody(list, link, formId)">
+    <!--
+    pageNo -> 1  totalCount -> 500  numOfRows -> 10
+    total/rows -> 5 -> block
+    -->
+    <div class="pagenation" th:with="start=${T(Math).floor(list.pageNo)}, last=(${start + 4 < list.totalCount/list.numOfRows ? start + 4 : (list.totalPages == 0 ? 1 : list.totalCount/list.numOfRows)})">
+        <a class="prev_btn" href="javascript:;" th:onclick="'fnPage('+${list.pageNo == 1 ? list.pageNo : list.pageNo - 1}+')'" ></a>
+        <th:block th:each="page: ${#numbers.sequence(start, last)}">
+            <a href="javascript:;" th:class="${page == (list.pageNo)} ? 'active'" th:text="${page}" th:onclick="'fnPage('+${page}+')'"></a>
+        </th:block>
+        <a class="next_btn" href="javascript:;" th:onclick="'fnPage('+${(list.pageNo == 1 ? list.pageNo : list.pageNo + 1)}+')'"></a>
+    </div>
+
+    <script type="text/javascript" th:inline="javascript">
+        /* <![CDATA[ */
+        function fnPage(page) {
+            let link = /*[[ ${link} ]]*/;
+            let formId = /*[[ ${formId} ]]*/;
+
+            if (page) {
+                link = link +'?pageNo='+page;
+            }
+
+            var frm = $('#'+formId);
+            frm.prop('action', link);
+            frm.submit();
+        }
+        /* ]]> */
+    </script>
+</div>
